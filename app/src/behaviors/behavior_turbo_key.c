@@ -150,8 +150,8 @@ static const struct behavior_driver_api behavior_turbo_key_driver_api = {
         .tap_ms = DT_INST_PROP(n, tap_ms),                                                         \
         .wait_ms = DT_INST_PROP(n, wait_ms),                                                       \
         .binding = _TRANSFORM_ENTRY(0, n)};                                                        \
-    DEVICE_DT_INST_DEFINE(n, behavior_turbo_key_init, NULL, &behavior_turbo_data_##n,              \
-                          &behavior_turbo_config_##n, APPLICATION,                                 \
-                          CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_turbo_key_driver_api);
+    BEHAVIOR_DT_INST_DEFINE(n, behavior_turbo_key_init, NULL, &behavior_turbo_data_##n,            \
+                            &behavior_turbo_config_##n, POST_KERNEL,                               \
+                            CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &behavior_turbo_key_driver_api);
 
 DT_INST_FOREACH_STATUS_OKAY(TURBO_INST)
